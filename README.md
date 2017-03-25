@@ -4,7 +4,8 @@
 
 ### 说明
 
-	支持多进程的Sharedpreference。在使用时会判断调用者的进程与sharedPreference的进程是否相同，如果是同一个进程相同则使用普通调用；如果不同，则通过ContentProvider调用SharedPreference。
+	支持多进程的Sharedpreference。在使用时会判断调用者的进程与sharedPreference的进程是否相同，
+	如果是同一个进程相同则使用普通调用；如果不同，则通过ContentProvider调用SharedPreference。
 
 	使用方法：
 	1，AndroidManifest.xml添加如下代码。 进程名称可任意指定
@@ -18,9 +19,10 @@
 	SharedPreferences preferences =PreferenceUtil.getSharedPreference(context, "perference_name");
 
 
-###注意：
+### 注意：
 
-	1,在获取SharedPreferences时会判断calling pid，对处于同一进程的调用者，返回原生的SharedPreferences。如果原项目里没有跨进程使用SharedPreferences, 直接替换后，也不会对调用性能造成任何影响。
+	1,在获取SharedPreferences时会判断calling pid，对处于同一进程的调用者，返回原生的SharedPreferences。
+	如果原项目里没有跨进程使用SharedPreferences, 直接替换后，也不会对调用性能造成任何影响。
 
 	public static SharedPreferences getSharedPreferences(@NonNull Context ctx, String preferName) {
         //First check if the same process
