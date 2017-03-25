@@ -1,10 +1,10 @@
 # MultiprocessPreference
-Android sharedpreference support multi process access. Use it just like the origin sharedperference.It will auto decide whether use multiprocessPerference by calling pid.
 
+支持多进程SharedPreference
 
 ### 说明
-		
-		支持多进程的Sharedpreference。在使用时会判断调用者的进程与sharedPreference的进程是否相同，如果是同一个进程相同则使用普通调用；如果不同，则通过`ContentProvider`调用SharedPreference。
+
+	支持多进程的Sharedpreference。在使用时会判断调用者的进程与sharedPreference的进程是否相同，如果是同一个进程相同则使用普通调用；如果不同，则通过ContentProvider调用SharedPreference。
 
 	使用方法：
 	1，AndroidManifest.xml添加如下代码。 进程名称可任意指定
@@ -15,10 +15,11 @@ Android sharedpreference support multi process access. Use it just like the orig
             android:exported="false"/>
 	
 	2，调用方式如下，只需要将原来获取SharedPreferences换成如下即可。
-		SharedPreferences preferences =PreferenceUtil.getSharedPreference(context, "perference_name");
+	SharedPreferences preferences =PreferenceUtil.getSharedPreference(context, "perference_name");
 
 
 ###注意：
+
 	1,在获取SharedPreferences时会判断calling pid，对处于同一进程的调用者，返回原生的SharedPreferences。如果原项目里没有跨进程使用SharedPreferences, 直接替换后，也不会对调用性能造成任何影响。
 
 	public static SharedPreferences getSharedPreferences(@NonNull Context ctx, String preferName) {
@@ -42,4 +43,4 @@ Android sharedpreference support multi process access. Use it just like the orig
         }
     }
 
-	2,对于跨进程调用时，还未实现registerOnSharedPreferenceChangeListener。后面会用ContentObserver 实现
+	2,对于跨进程调用时，暂未实现registerOnSharedPreferenceChangeListener。后面会用ContentObserver 实现
